@@ -5,19 +5,31 @@ import { Link } from "react-router-dom";
 
 export const UserPage = () => {
     const dispatch = useDispatch()
-    const userList = useSelector(state => state.users)
-    const{users} = userList
+    const userState = useSelector(state => state.users)
+    const { users } = userState
+    const{error} = userState
     useEffect(() => {
         dispatch(getUsers())
     }, [dispatch])
 
+
+
     return(
+        
+        
         <>
+        {error && <div class="alert" role="alert">
+                <h4 class="alert-heading">{error}</h4>               
+                <hr />
+        </div>}
+        
         <div className="container">
         <div className="row">
 
-
+        
         {users.map((user,index) => (
+
+            
           <div className="col-4" key={index}>
             <div className="card mb-3">
                 <div className="row g-0">
@@ -31,7 +43,7 @@ export const UserPage = () => {
                     <p>Phone: {user.phone}</p>
                     <p>Company: {user.company.name}</p>
                     <p className="card-text"><small className="text-muted">Website: {user.website}</small></p>
-                    {/* <Link className='btn btn-success' to={`/user-todo/${user.id}`}>ShowTodos</Link> */}
+                    <Link className='btn btn-success' to={`/user-todo/${user.id}`}>ShowTodos</Link>
                     <Link className="btn btn-danger" to={`/user-posts/${user.id}`}>Show Post</Link>
                 </div>
                 </div>

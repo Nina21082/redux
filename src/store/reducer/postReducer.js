@@ -5,16 +5,19 @@ const initialState = {
 }
 export function postReducer(state = initialState, action){
 
-    if(action.type === GET_POSTS){
-        return{
+    switch(action.type){
+        case GET_POSTS: {
+            return{
             ...state,
             posts: action.payload
         }
-    }else if(action.type === POSTS_ERROR){
-        return{
+        }
+        case POSTS_ERROR: {
+            return{
             error: action.payload
         }
+        }
+        default: return state
     }
 
-    return state
 }

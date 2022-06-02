@@ -1,7 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
-.App {
-  text-align: center;
-}
+
+
+
 
 .App-logo {
   height: 40vmin;
@@ -36,4 +36,56 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.todo{
+
+  text-decoration: none;
+  width: 13% ;
+  height: 60px;
+  background-color: rgb(164, 219, 152);
+  color: black;
+  border-radius: 20px;
+  font-size: 14px;
+  padding: 6px
+}
+.post{
+  text-decoration: none;
+  width: 13% ;
+  height: 60px;
+  background-color: rgb(152, 198, 219);
+  color: black;
+  border-radius: 20px;
+  font-size: 14px;
+  padding: 6px
+}
+.closeComment{
+  display: none;
+}
+.openComment{
+  display: block;
+}
+.todos{
+  text-align: left;
+  display: flex;
+  padding: 7px;
+}
+.input{
+  display: flex;
+}
+.complated{
+  text-decoration: line-through;
+}
+.uncomplated{
+  text-decoration: none;
+}
+
+.profile-photo-lg{
+  width: 50%;
+  margin: 15px;
+  
+}
+.nearby-user{
+  margin-top: 10px;
+  border-radius: 10px;
 }

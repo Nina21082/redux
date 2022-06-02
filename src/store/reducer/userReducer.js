@@ -1,19 +1,27 @@
 import { GET_USERS, USERS_ERROR } from "../types";
 
 const initalState = {
-    users: []
+    users: [],
+    error: ''
 }
 export function userReducer(state = initalState, action){
-    if(action.type === GET_USERS){
-        return{
-            ...state, 
+    console.log(action)
+    switch(action.type){
+        case GET_USERS : {
+            return{
+                 ...state, 
             users: action.payload,
+            error: ''
+            }
         }
+        case USERS_ERROR: {
 
-    }else if(action.type === USERS_ERROR){
-        return{
+             return{
+            ...state,
             error: action.payload
         }
+        }
+        default: return state
     }
-    return state
+   
 }

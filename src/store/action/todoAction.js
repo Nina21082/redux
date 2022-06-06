@@ -20,22 +20,17 @@ export const getTodos = (id) => async dispatch => {
 }
 
 export const addTodo = (id, data) => async dispatch => {
-    console.log(addTodo())
     try{
         const res = await axios.post(`https://jsonplaceholder.typicode.com/users/${id}/todos`, data)
-        console.log(res.data)
         dispatch({
             type: POST_TODOS,
             payload: res.data
         });
-        
-     
     }catch(error){
         dispatch({
             type: POST_ERROR,
             payload: error
         })
-        
     }
 }
 
@@ -45,7 +40,6 @@ export const deletTodo = (id) => dispatch =>{
         type: DELATE_TODO,
         payload: id
     })
-    console.log(11)
 
 }
 export const complateTodo = (id) => dispatch =>{

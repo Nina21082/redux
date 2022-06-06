@@ -16,12 +16,12 @@ export const UserPost = () => {
     const commentList = useSelector(state => state.comments)
     const {comments} = commentList
     const {posts} =  postList
+
     useEffect(() => {
         dispatch(getPosts(id))
     }, [dispatch])
 
     const showComment = (id) => {
-        console.log(activePostId)
         if(activePostId === id){
             setactivePostId(null)
             return
@@ -34,18 +34,29 @@ export const UserPost = () => {
         <div className="container">
             <div className="row">
                 {posts.map((post, index) => (
-                <div className="col-9" key={index}>
-                    <div className="accordion" id="accordionExample">
-                     <div className="accordion-item">
-                        <h2 className="accordion-header" id="headingOne">
-                        </h2>
-                            <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div className="accordion-body">
-                        <strong>This is the first item's accordion body.</strong> {post.body}
-                        </div>
-                       <button onClick={() => showComment(post.id)} className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                           User comments {post.id}
+                      <div className="userPost">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
+                                <div class="post-type">
+                                <img class="d-inline-block img-fluid mb-2" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="img" />
+                                </div>
+                                <div class="author-info author-info-2">
+
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
+                                <div class="caption">
+                                    <h4 class="md-heading">{post.title}</h4>
+                                    <p>{post.body}</p>
+                                   </div>
+                            </div>
+                            <button onClick={() => showComment(post.id)} className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Comments
                        </button>
+                        </div>
+                       
+
+                       
                        <div className={activePostId === post.id ? 'openComment' : 'closeComment' }>{comments.map((comment, index) => (
                             <div className="container" key={index}>
                                     <div className="row">
@@ -54,7 +65,7 @@ export const UserPost = () => {
                                             <div className="nearby-user border border-3">
                                                 <div className="row">
                                                 <div className="col-md-2 col-sm-2">
-                                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/2048px-User_font_awesome.svg.png" alt="user" className="profile-photo-lg" />
+                                                <img class="d-inline-block img-fluid mb-4" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="img" />
                                                 </div>
                                                 <div className="col-md-8 col-sm-8">
                                                     <h5>{comment.name}</h5>
@@ -70,9 +81,7 @@ export const UserPost = () => {
                         ))}
                        </div>              
                      </div>
-                   </div>
-                 </div> 
-               </div>              
+                         
                 ))}
             </div>
         </div>
